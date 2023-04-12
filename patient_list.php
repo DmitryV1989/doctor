@@ -37,16 +37,17 @@ while($row = mysqli_fetch_assoc($sqlResult)) {
 <?php
 //p($_POST);
 if(isset($_POST['save'])) {
+    $name = check($_POST['patient_name']);
     $sqlResult = mysqli_query($sqlConnect,"INSERT INTO `patient` VALUES (
 		0,
-		'".$_POST['patient_name']."',
+		'".$name."',
 		'".$_POST['pers_numb']."',
 		'".$_POST['birth']."',
 		'".$_POST['sex']."',
 		NOW()
 	);");
     if($sqlResult){
-        header("Location: /patient_profile.php?id=".$sqlConnect->insert_id);
+        header("Location: /patient_list.php");
     }
     else {
         p("запись не внесена");
@@ -63,7 +64,6 @@ if(isset($_POST['save'])) {
         <td>номер полиса</td>
         <td>пол</td>
         <td>дата рождения</td>
-        <td>дата создания</td>
     </tr>
     <? foreach ($arPatient as $item ): ?>
     <tr>
@@ -72,7 +72,6 @@ if(isset($_POST['save'])) {
         <td><?=$item['pers_numb']?></td>
         <td><?=$sex[$item['sex']]?></td>
         <td><?=$item['DOB']?></td>
-        <td><?=$item['created_at']?></td>
         <td><a href="/patient_list.php?id=<?=$item['id']?>&code=edit">редактировать</a></td>
         <td><a href="/patient_list.php?id=<?=$item['id']?>&code=delete">удалить</a></td>
 <!--        при переходе по ссылке мы попадаем на ту же страницу, на которой находимся, при этом появляется новая функция-->
@@ -147,7 +146,6 @@ if(isset($_POST['save'])) {
             } break;
             case 'delete' :
             {  // при нажатии на "удалить":
-                if (!isset($_GET['delete'])) {
                 $delete = mysqli_query($sqlConnect, "DELETE FROM `patient` WHERE `id`=".$_GET['id']);
                     if($delete){
                         $sqlResult = mysqli_query($sqlConnect, "UPDATE `history` SET 
@@ -156,7 +154,6 @@ if(isset($_POST['save'])) {
                         ?><meta http-equiv="refresh" content="1; url=/patient_list.php" /><?
                         p("данные пациента удалены");
                     }
-                }
                 // запрос DELETE (удаление)
             } break;
         }

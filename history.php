@@ -7,58 +7,77 @@ $sqlResult = mysqli_query($sqlConnect,"SELECT * FROM `history`");
 while($row = mysqli_fetch_assoc($sqlResult)) {
     $arHistory[$row['id']] = $row;
 }
+//p($arHistory);
+$sqlResult = mysqli_query($sqlConnect,"SELECT * FROM `patient`");
+while($row = mysqli_fetch_assoc($sqlResult)) {
+    $arPatient[$row['id']] = $row;
+}
 
+//p($arPatient);
 ?>
 
-<table id="history" border="2">
-    <tr>
-        <td>id</td>
-        <td>приём</td>
-        <td>пациент</td>
-        <td>дата создания</td>
-    </tr>
-    <? foreach ($arHistory as $item ): ?>
-        <tr>
-            <td><?=$item['id']?></td>
-            <td><?=$item['day_time']?></td>
-            <td><?=$item['patient_id']?></td>
-            <td><?=$item['created_at']?></td>
-        </tr>
-    <? endforeach; ?>
-</table>
-<form method="post" id="app">
-    <h2>Назначить время приёма</h2>
-        <label for="day_time">время приёма</label>
-        <select name="day_time" id="day_time">
-            <? foreach ($arHistory as $item ):if($item['patient_id']==0) continue; ?>
-                <option value="<?=$item['id']?>"><?=$item['day_time']?></option>
-            <? endforeach; ?>
-        </select>
-    </div>
-    <div>
-        <label for="patient">ваше имя</label>
-        <input type="text" id="patient" name="patient" required>
-    </div>
-</form>
+
 
 <h2> история посещений</h2>
 <table id="visits" border="1">
     <tr>
         <td>назначенный приём</td>
         <td>пациент</td>
+        <td>статус посещения</td>
+        <td></td>
     </tr>
-    <? foreach ($arHistory as $item ):if($item['patient_id']==0) continue;
+
+    <?php
+    foreach ($arHistory as $item ):
         if(strtotime($item['day_time'])<time()) $color = "grey";
         elseif(strtotime($item['day_time'])>time()) $color = "green";
+        switch ($item['visit_status']) {
+            case 0 : $visit_status_color = 'grey'; break;
+            case 1 : $visit_status_color = 'green'; break;
+            case 2 : $visit_status_color = 'red'; break;
+        }
         ?>
-            <tr>
-                <td>
-                    <div><strong style="color:<?=$color?>"><?=$item['day_time']?></div>
-                </td>
-                <td>
-                   <div><?=$item['patient_id']?></div>
-                </td>
+            <tr style="color:<?=$color?>">
+                <td><strong><?=$item['day_time']?></strong></td>
+                <td><?=$item['patient_id']?></td>
+                <td style="background:<?=$visit_status_color?>"><?=$visit_status[$item['visit_status']]?></td>
+                <td><a href="">редактировать</a></td>
             </tr>
-    <? endforeach; ?>
+    <?endforeach;?>
+
 </table>
 
+<!--TODO назначить атрибут style td статус посещения стр 36-->
+<?
+p($_GET);
+if (isset($_GET['code'])) {
+    $sqlResult = mysqli_query($sqlConnect, "SELECT * FROM `history` WHERE `id`=".$_GET['id']);
+    while($row = mysqli_fetch_assoc($sqlResult)) {
+        $redact = $row;
+    } ?>
+    <form method="post" id="redact">
+        <h2>Редактировать</h2>
+        <div>
+            <label for="visit_id">статус посещения</label>
+            <input type="text" id="visit_status" name="visit_status" value="<?=$redact['visit_id']?>">
+        </div>
+        <div>
+            <input type="submit" name="red" value="принять">
+        </div>
+    </form>
+    <?
+    p($_POST);
+    if(isset($_POST['принять'])) {
+        $red =  mysqli_query($sqlConnect,"UPDATE `history` SET
+            `visit_id` = '".$_POST['visit_status']."'
+            WHERE `id`=".$_GET['id']);
+            p("данные успешно изменены");
+    }
+    else {
+        p("ошибка редакции");
+    }
+
+}
+//
+//?>
+<?//if($visit_status[$item['visit_status']]='неявка'):?>
