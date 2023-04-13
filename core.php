@@ -25,7 +25,7 @@ function p($text) {
 
 
 $sex = [1=>'мужской',2=>'женский'];
-$visit_status =[0=>'ещё не пришло',1=>'явка',2=>'неявка'];
+$visit_status =[0=>'ещё не прошло',1=>'явка',2=>'неявка'];
 
 
 function SELECT($select_query, $type = "rows") {

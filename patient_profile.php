@@ -54,9 +54,10 @@ $period = new DatePeriod(
 
 $start = '10:00';
 $end = '19:00';
-$st= strtotime($start);
-$et = strtotime($end);
-
+$start_time= strtotime($start);
+$end_time = strtotime($end);
+$break_time_start = '12:00';
+$break_time_end  = '13:00';
 ?>
 
 <form method="post" id="app">
@@ -73,23 +74,24 @@ $et = strtotime($end);
         <label for="time">время приёма</label>
         <select name="time" id="time">
             <?
-            while($st < $et) {
-                $t = strtotime("+30 minute", $st);?>
-                <option><?=date("H:i", $st)?></option>
-                <? $st = $t; // что здесь?
+            while($start_time < $end_time) {
+                $t = strtotime("+30 minute", $start_time);
+                if ($start_time>=strtotime($break_time_start)&$start_time<strtotime($break_time_end)) {
+                    $start_time = $t;
+                    continue;
+                }
+                ?>
+                <option><?=date("H:i", $start_time)?></option>
+                <? $start_time = $t;
             }
             ?>
         </select>
-        <!--        /TODO доделать время-->
     </div>
     <div>
         <label for="reason">причина обращения</label>
         <input type="text" id="reason" name="reason">
     </div>
-    <div>
-        <label for="visit_id">статус посещения</label>
-        <input type="text" id="visit_id" name="visit_id">
-    </div>
+
     <div>
         <label for="survey">лечение</label>
         <textarea name="survey" id="survey" cols="30" rows="10"></textarea>
@@ -104,21 +106,52 @@ $et = strtotime($end);
     </div>
 </form>
 <?
+
+
+
 if(isset($_POST['make'])){
-    $day_time = $_POST['date'].''.$_POST['time'];
-    p($day_time);
-    $history = mysqli_query($sqlConnect,"INSERT INTO `history` VALUES (
-		0,
-		'".$day_time."',
-		'".$_POST['patient_id']."',
-		'".$_POST['reason']."',
-		'".$_POST['survey']."',
-		'".$_POST['resume']."',
-		NOW()
-	);");
-    ?><meta http-equiv="refresh" content="1; url=/history.php" /><?
-    p("приём назначен");
+    $day_time = str_replace('.','-',$_POST['date']).' '.$_POST['time'];
+    $status_match = false;
+    $sqlResult=mysqli_query($sqlConnect,"SELECT `day_time` FROM `history`");
+    while ($row = mysqli_fetch_assoc($sqlResult)) {
+        if(strtotime($day_time)==strtotime($row['day_time'])) {
+            p('выберите другое время');
+            $status_match = true;
+            break;
+        }
+    }
+    if(!$status_match){
+        $history = mysqli_query($sqlConnect,"INSERT INTO `history` VALUES (
+                0,
+                '".$day_time."',
+                '".$_POST['patient_id']."',
+                '".$_POST['reason']."',
+                0,
+                '".$_POST['survey']."',
+                '".$_POST['resume']."',
+                NOW()
+            );");
+        ?><meta http-equiv="refresh" content="2; url=/history.php" /><?
+        p("приём назначен");
+    }
+
+
+
+
+//    $history = mysqli_query($sqlConnect,"INSERT INTO `history` VALUES (
+//		0,
+//		'".$day_time."',
+//		'".$_POST['patient_id']."',
+//		'".$_POST['reason']."',
+//		'".$_POST['visit_status']."',
+//		'".$_POST['survey']."',
+//		'".$_POST['resume']."',
+//		NOW()
+//	);");
+//    ?><!--<meta http-equiv="refresh" content="1; url=/history.php" />--><?//
+//    p("приём назначен");
 }
+
 ?>
 
 

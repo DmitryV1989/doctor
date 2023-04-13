@@ -29,18 +29,18 @@ while($row = mysqli_fetch_assoc($sqlResult)) {
 
     <?php
     foreach ($arHistory as $item ):
-        if(strtotime($item['day_time'])<time()) $color = "grey";
+        if(strtotime($item['day_time'])<time()) $color = "black";
         elseif(strtotime($item['day_time'])>time()) $color = "green";
         switch ($item['visit_status']) {
-            case 0 : $visit_status_color = 'grey'; break;
-            case 1 : $visit_status_color = 'green'; break;
-            case 2 : $visit_status_color = 'red'; break;
+            case 0 : $visit_status_color = 'white'; break;
+            case 1 : $visit_status_color = 'grey'; break;
+            case 2 : $visit_status_color = 'pink'; break;
         }
         ?>
             <tr style="color:<?=$color?>">
                 <td><strong><?=$item['day_time']?></strong></td>
                 <td><?=$item['patient_id']?></td>
-                <td style="background:<?=$visit_status_color?>"><?=$visit_status[$item['visit_status']]?></td>
+                <td style="background:<?=$visit_status_color?>"><strong><?=$visit_status[$item['visit_status']]?></strong></td>
                 <td><a href="">редактировать</a></td>
             </tr>
     <?endforeach;?>
@@ -66,7 +66,6 @@ if (isset($_GET['code'])) {
         </div>
     </form>
     <?
-    p($_POST);
     if(isset($_POST['принять'])) {
         $red =  mysqli_query($sqlConnect,"UPDATE `history` SET
             `visit_id` = '".$_POST['visit_status']."'
