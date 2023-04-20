@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 05 2023 г., 18:03
+-- Время создания: Апр 20 2023 г., 18:12
 -- Версия сервера: 8.0.30
 -- Версия PHP: 8.1.9
 
@@ -33,21 +33,19 @@ CREATE TABLE `history` (
   `patient_id` int NOT NULL,
   `reason` text NOT NULL,
   `visit_status` int NOT NULL,
-  `survey` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `survey` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `resume` text NOT NULL,
   `created_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Дамп данных таблицы `history`
 --
 
 INSERT INTO `history` (`id`, `day_time`, `patient_id`, `reason`, `visit_status`, `survey`, `resume`, `created_at`) VALUES
-(1, '2023-04-01 10:00:00', 1, 'Бессонница', 1, 'назначен осмотр', 'назначен осмотр', '2023-04-01 00:45:48'),
-(2, '2023-04-01 11:00:00', 2, 'насморк', 1, '', 'назначен осмотр', '2023-04-01 00:48:44'),
-(3, '2023-04-05 17:00:00', 4, 'кашель, температура', 0, 'назначено противовирусное', 'ждём результатов', '2023-04-01 11:42:41'),
-(4, '2023-04-05 17:30:00', 3, 'болит голова', 0, 'назначен пенталгин', 'помогло', '2023-04-01 11:45:12'),
-(5, '2023-04-03 12:00:00', 1, 'Бессонница', 1, 'назначено успокоительное', 'помогло', '2023-04-01 11:46:23');
+(1, '2023-04-14 10:00:00', 1, 'test1', 0, 'test1', 'test1', '2023-04-13 15:34:09'),
+(2, '2023-04-14 10:30:00', 1, 'test2', 0, 'test2', 'test2', '2023-04-13 15:36:20'),
+(3, '2023-04-14 11:30:00', 1, 'test3', 0, 'test3', 'test3', '2023-04-13 15:39:41');
 
 -- --------------------------------------------------------
 
@@ -62,7 +60,7 @@ CREATE TABLE `patient` (
   `DOB` date NOT NULL,
   `sex` int NOT NULL,
   `created_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Дамп данных таблицы `patient`
@@ -98,13 +96,13 @@ ALTER TABLE `patient`
 -- AUTO_INCREMENT для таблицы `history`
 --
 ALTER TABLE `history`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
