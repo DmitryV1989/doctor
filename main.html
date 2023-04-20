@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doctor</title>
+<link rel="stylesheet" href="static/custom.css">
+<link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+	<div id="wrapper">
+		<div class="container">
+
+			<header>
+				<div class="row c1">
+					<a href="" id="logo"><img src="static/images/logo.png" alt="" class="bimg"></a>
+					<div class="blank">
+						<a href="#">Печать</a>
+						<a href="#">Процедуры</a>
+						<a href="#">Фармацевтика</a>
+					</div>
+					<div class="client">Связь с клиентом</div>
+				</div>	
+				<nav>
+					<a href="">Регистрация</a>
+					<a href="">История</a>
+				</nav>
+			</header>
+
+			<div id="main">
+				<h1>Главная</h1>
+				<table id="visits" border="1">
+					<tr>
+						<th colspan="4">История всех приёмов</th>
+					</tr>
+				    <tr>
+				        <td>назначенный приём</td>
+				        <td>пациент</td>
+				        <td>статус посещения</td>
+				        <td></td>
+				    </tr>
+		                <tr style="color:black">
+		                <td><strong>2023-04-14 10:00:00</strong></td>
+		                <td>5</td>
+		                <td style="background:white"><strong>ещё не прошло</strong></td>
+		                <td><a href="">редактировать</a></td>
+		            </tr>
+		                <tr style="color:black">
+		                <td><strong>2023-04-14 10:30:00</strong></td>
+		                <td>5</td>
+		                <td style="background:white"><strong>ещё не прошло</strong></td>
+		                <td><a href="">редактировать</a></td>
+		            </tr>
+		                <tr style="color:black">
+		                <td><strong>2023-04-14 11:30:00</strong></td>
+		                <td>5</td>
+		                <td style="background:white"><strong>ещё не прошло</strong></td>
+		                <td><a href="">редактировать</a></td>
+		            </tr>				  
+				</table>
+				<table id="library" border="1">
+					<tr>
+						<th colspan="7">Библиотека пациентов</th>
+					</tr>
+				    <tr>
+				        <td>id</td>
+				        <td>имя</td>
+				        <td>номер полиса</td>
+				        <td>пол</td>
+				        <td>дата рождения</td>
+				        <td colspan="2"></td>
+				    </tr>
+				        <tr>
+				        <td>1</td>
+				        <td><a href="/patient_profile.php?id=1">Дмитрий</a></td>
+				        <td>1234</td>
+				        <td>мужской</td>
+				        <td>1989-08-14</td>
+				        <td><a href="/patient_list.php?id=1&code=edit">редактировать</a></td>
+				        <td><a href="/patient_list.php?id=1&code=delete">удалить</a></td>
+				    </tr>
+				        <tr>
+				        <td>2</td>
+				        <td><a href="/patient_profile.php?id=2">Алекс</a></td>
+				        <td>2345</td>
+				        <td>мужской</td>
+				        <td>1995-05-03</td>
+				        <td><a href="/patient_list.php?id=2&code=edit">редактировать</a></td>
+				        <td><a href="/patient_list.php?id=2&code=delete">удалить</a></td>
+				    </tr>
+				        <tr>
+				        <td>3</td>
+				        <td><a href="/patient_profile.php?id=3">Наталья</a></td>
+				        <td>9858</td>
+				        <td>женский</td>
+				        <td>1993-09-28</td>
+				        <td><a href="/patient_list.php?id=3&code=edit">редактировать</a></td>
+				        <td><a href="/patient_list.php?id=3&code=delete">удалить</a></td>
+				    </tr>
+				        <tr>
+				        <td>4</td>
+				        <td><a href="/patient_profile.php?id=4">Виктория</a></td>
+				        <td>9292</td>
+				        <td>женский</td>
+				        <td>1983-09-02</td>
+				        <td><a href="/patient_list.php?id=4&code=edit">редактировать</a></td>
+				        <td><a href="/patient_list.php?id=4&code=delete">удалить</a></td>
+				    </tr>
+				</table>
+			</div>
+
+		</div>
+	</div>	
+	<footer>
+		<div class="container">
+			<span class="copyright">Частная поликлиника Весового Д. Все права защищены 2023</span>
+		</div>		
+	</footer>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doctor</title>
+<link rel="stylesheet" href="static/custom.css">
+<link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+	<div id="wrapper">
+		<div class="container">
+
+			<header>
+				<div class="row c1">
+					<a href="" id="logo"><img src="static/images/logo.png" alt="" class="bimg"></a>
+					<div class="blank">
+						<a href="#">Печать</a>
+						<a href="#">Процедуры</a>
+						<a href="#">Фармацевтика</a>
+					</div>
+					<div class="client">Связь с клиентом</div>
+				</div>	
+				<nav>
+					<a href="">Регистрация</a>
+					<a href="">История</a>
+				</nav>
+			</header>
+
+			<div id="reg_patient">
+				<h1>Новый пациент</h1>
+				<form method="post" id="new_patient">
+				    <div class="field_area">
+				        <label for="patient_name">Имя</label>
+				        <input type="text" id="patient_name" name="patient_name" class="field">
+				    </div>
+				    <div class="field_area">
+				        <label for="pers_numb">Номер полиса</label>
+				        <input type="text" id="pers_numb" name="pers_numb" class="field">
+				    </div>
+				    <div class="field_area">
+				        <label for="birth">Дата рождения</label>
+				        <input type="date" id="birth" name="birth" class="field">
+				    </div>
+				    <div class="field_area">
+				        <h3 style="color:blue">Пол</h3>
+			            <input type="radio" name="sex" value="1" id="sex1">
+			            <label for="sex1" class="inline">мужской</label>
+			            <input type="radio" name="sex" value="2" id="sex2">
+			            <label for="sex2" class="inline">женский</label>
+				    </div>
+				    <div class="field_area">
+				        <input type="submit" name="save" value="внести запись" class="field">
+				    </div>
+				</form>
+			</div>
+
+		</div>
+	</div>	
+	<footer>
+		<div class="container">
+			<span class="copyright">Частная поликлиника Весового Д. Все права защищены 2023</span>
+		</div>		
+	</footer>
+</body>
+</html>

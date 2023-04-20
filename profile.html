@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doctor</title>
+<link rel="stylesheet" href="static/custom.css">
+<link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+	<div id="wrapper">
+		<div class="container">
+
+			<header>
+				<div class="row c1">
+					<a href="" id="logo"><img src="static/images/logo.png" alt="" class="bimg"></a>
+					<div class="blank">
+						<a href="#">Печать</a>
+						<a href="#">Процедуры</a>
+						<a href="#">Фармацевтика</a>
+					</div>
+					<div class="client">Связь с клиентом</div>
+				</div>	
+				<nav>
+					<a href="">Регистрация</a>
+					<a href="">История</a>
+				</nav>
+			</header>
+
+			<div id="profile_patient">
+				<h1>Пациент: Дмитрий</h1>
+				<table id="patient" border="1">
+				    <tr>
+				        <td>Имя</td>
+				        <td>Номер полиса</td>
+				        <td>Пол</td>
+				        <td>Дата рождения</td>
+				    </tr>
+				    <tr>
+				        <td>Дмитрий</td>
+				        <td>1111</td>
+				        <td>мужской</td>
+				        <td>14.05.1975</td>
+				    </tr>
+				</table>
+				<form method="post" id="app">
+				    <div class="field_area">
+				        <label for="date">дата приёма</label>
+				        <select name="date" id="date" class="field">
+                            <option>2023.04.17</option>
+                            <option>2023.04.18</option>
+                            <option>2023.04.19</option>
+                            <option>2023.04.20</option>
+                            <option>2023.04.21</option>
+                            <option>2023.04.22</option>
+				        </select>
+				    </div>
+				    <div class="field_area">
+				        <label for="time">время приёма</label>
+				        <select name="time" id="time" class="field">
+                            <option>10:00</option>
+                            <option>10:30</option>
+                            <option>11:00</option>
+                            <option>11:30</option>
+                            <option>13:00</option>
+                            <option>13:30</option>
+                            <option>14:00</option>
+                            <option>14:30</option>
+                            <option>15:00</option>
+                            <option>15:30</option>
+                            <option>16:00</option>
+                            <option>16:30</option>
+                            <option>17:00</option>
+                            <option>17:30</option>
+                            <option>18:00</option>
+                            <option>18:30</option>
+                    	</select>
+				    </div>
+				    <div class="field_area">
+				        <label for="reason">причина обращения</label>
+				        <input type="text" id="reason" name="reason" class="field">
+				    </div>
+
+				    <div class="field_area">
+				        <label for="survey">лечение</label>
+				        <textarea name="survey" id="survey" cols="30" rows="10" class="field"></textarea>
+				    </div>
+				    <div class="field_area">
+				        <label for="survey">результат</label>
+				        <textarea id="resume" name="resume" cols="30" rows="10" class="field"></textarea>
+				    </div>
+				    <div class="field_area">
+				        <input type="hidden" name="patient_id" value="1" required>
+				        <input type="submit" name="make" value="назначить" class="field">
+				    </div>
+				</form>
+				<table id="history" border="1">
+					<tr>
+						<th colspan="6">История посещений пациента: Дмитрий</th>
+					</tr>
+				    <tr>
+				        <td>Дата посещения</td>
+				        <td>Время посещения</td>
+				        <td>Причина посещения</td>
+				        <td>Назначенное лечение</td>
+				        <td>Результат лечения</td>
+				        <td>Дата создания заявки</td>
+				    </tr>
+				    <tr>
+				        <td>2023-04-14</td>
+				        <td>10:00:00</td>
+				        <td>test1</td>
+				        <td>test1</td>
+				        <td>test1</td>
+				        <td>2023-04-13 15:34:09</td>
+				    </tr>				    
+				    <tr>
+				        <td>2023-04-14</td>
+				        <td>10:30:00</td>
+				        <td>test2</td>
+				        <td>test2</td>
+				        <td>test2</td>
+				        <td>2023-04-13 15:36:20</td>
+				    </tr>			    
+				    <tr>
+				        <td>2023-04-14</td>
+				        <td>11:30:00</td>
+				        <td>test3</td>
+				        <td>test3</td>
+				        <td>test3</td>
+				        <td>2023-04-13 15:39:41</td>
+				    </tr>
+				</table>
+			</div>
+
+		</div>
+	</div>	
+	<footer>
+		<div class="container">
+			<span class="copyright">Частная поликлиника Весового Д. Все права защищены 2023</span>
+		</div>		
+	</footer>
+</body>
+</html>

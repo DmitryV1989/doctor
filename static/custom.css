@@ -1,0 +1,96 @@
+/* структрура */
+html, body {
+	height: 100%;
+}
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+#wrapper {
+    flex: 1 0 auto;
+}
+.container { 
+    width: 1000px;
+    margin: 0 auto;
+}
+footer {
+    flex: 0 0 auto;
+}
+
+/* Атомарные классы */
+.bimg {
+    display: block;
+    width: 100%;
+}
+table {
+    width: 100%;
+    margin: 10px 0;
+    border-collapse: collapse;
+}
+td, th {
+    padding: 5px;
+}
+th {
+    background: #202020;
+    color: white;
+}
+
+.field_area {
+    margin-bottom: 15px;
+}
+.field {
+    display: block;
+    padding: 5px 8px 6px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: Arial;
+    font-size: 0.8em;
+}
+.field_area label:not(.inline) {
+    display: block;
+    margin-bottom: 5px;
+}
+input.field[type="submit"] {
+    width: unset;
+    padding-left: 15px;
+    padding-right: 15px;
+    cursor: pointer;
+}
+
+/* БЭМ */
+
+header {
+    display: flex;
+    flex-direction: column;
+}
+header .blank {
+    display: flex;
+    gap: 40px;
+}
+header .row.c1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+header nav {
+    padding: 10px;
+    background: #212121;
+    font-size: 1.4em;
+}
+header nav a {
+    text-decoration: none;
+    color: white;
+    margin-right: 10px;
+}
+
+footer .container {
+    background: #212121;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+} 
+footer .copyright {
+    color: white;
+}
