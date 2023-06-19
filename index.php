@@ -12,8 +12,13 @@ array_key_exists($CORE['URL']['PATH'], $CORE['ROUTES']); // проверяет �
 // p($CORE);
 $CORE['CURRENT']['SECTION'] = array_key_exists($CORE['URL']['PATH'], $CORE['ROUTES']) ? $CORE['ROUTES'][$CORE['URL']['PATH']] : ['404'];
 
-// формируем страницу
+// формируем страницу с буферизацией
+ob_start(); 
 require_once($_SERVER['DOCUMENT_ROOT']."/core/dev/index.php");
+$page = ob_get_contents();
+ob_end_clean();
+$page = mb_convert_encoding($page, "UTF-8");
+echo $page;
 
 
 

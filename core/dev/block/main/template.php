@@ -13,9 +13,9 @@
 	    <? foreach ($arHistory as $item): ?>
 	 	<tr style="color:<?=$item['present']?>">
             <td><strong><?=$item['day_time']?></strong></td>
-            <td><?=$item['patient_id']?></td>
+            <td><a href="/profile?id=<?=$item['patient']['id']?>"><?=$item['patient']['name']?></a></td>
             <td style="background:<?=$item['visit_status']['color']?>"><strong><?=$item['visit_status']['label']?></strong></td>
-            <td><a href="">редактировать</a></td>
+            <td><a href="/profile?history_id=<?=$item['id']?>&code=edit_appoint">редактировать</a></td>
         </tr>
 		<? endforeach; ?>
 	</table>	
@@ -39,8 +39,8 @@
 	        <td><?=$item['pers_numb']?></td>
 	        <td><?=$item['sex']?></td>
 	        <td><?=$item['DOB']?></td>
-	        <td><a href="?id=<?=$item['id']?>&code=edit">редактировать</a></td>
-	        <td><a href="?id=<?=$item['id']?>&code=delete">удалить</a></td>
+	        <td><a href="/reg?id=<?=$item['id']?>&code=edit">редактировать</a></td>
+	        <td><a href="/reg?id=<?=$item['id']?>&code=delete">удалить</a></td>
 
 	    </tr>
 	    <? endforeach; ?>

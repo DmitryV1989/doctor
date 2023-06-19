@@ -1,6 +1,10 @@
 <div id="reg_patient">
 	<h1>Новый пациент</h1>
-	<form method="post" id="new_patient">
+	<form method="post" id="new_patient" enctype="multipart/form-data">
+		<div class="field_area">
+	    	<label for="photo">Фото пациента (не меньше 100х100)</label>
+	    	<input type="file" id="photo" name="patient_photo" class="field" accept="image/*">       
+    	</div>
 	    <div class="field_area">
 	        <label for="patient_name">Имя</label>
 	        <input type="text" id="patient_name" name="patient_name" class="field">
@@ -21,7 +25,11 @@
             <label for="sex2" class="inline">женский</label>
 	    </div>
 	    <div class="field_area">
+	    	<?//=(isset($_SESSION['MESSAGE'])? $_SESSION['MESSAGE'] : '')?>
+	    	
+	    	<input type="hidden" value="create_patient" name="CODE">
 	        <input type="submit" name="save" value="внести запись" class="field">
 	    </div>
+
 	</form>
 </div>

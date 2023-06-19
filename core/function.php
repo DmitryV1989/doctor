@@ -40,4 +40,52 @@ function check($field) {
     return htmlspecialchars(trim(stripcslashes($field)));
 }
 
+function new_image_create($image_path, $source_width, $source_height, $ready_width, $ready_height, $file_type) {
+    switch ($file_type) {
+        case 'image/jpeg': {
+            $source = @imagecreatefromjpeg($image_path);
+        } break;       
+        case 'image/png': {
+            $source = @imagecreatefrompng($image_path);
+        } break;
+    }
+    // создание нового пустого холста
+    $image = @imagecreatetruecolor($ready_width, $ready_height);
+    // наложение временной картинки на пустой холст
+    @imagecopyresampled($image, $source, 0, 0, 0, 0, $ready_width, $ready_height, $source_width, $source_height);
+    // создание пересобранного файла
+    switch ($file_type) {
+        case 'image/jpeg' : {
+            return @imagejpeg($image, $image_path);                
+        } break;         
+        case 'image/png' : {
+            return @imagepng($image, $image_path);       
+        } break;
+    }
+}
+
+function prop_resize_min($source_width, $source_height, $limit_width, $limit_height) {
+    if($source_width >= $source_height) {
+        $ratio = $source_width / $source_height;
+        $ratio_width = $source_width / $limit_width;
+        $ready_width = round($source_width / $ratio_width);
+        $ready_height = round($ready_width / $ratio);
+    }
+    elseif($source_height > $source_width) {
+        $ratio = $source_height / $source_width;
+        $ratio_height = $source_height / $limit_height;
+        $ready_height = round($source_height / $ratio_height);
+        $ready_width = round($ready_height / $ratio);
+    }  
+    return [
+        "width" => $ready_width,
+        "height" => $ready_height
+    ];
+}
+
+
+
+
+
+
 ?>

@@ -1,4 +1,7 @@
 <?
+
+// $CORE['LIST']
+
 return [
 	'time' => [
 		// рабочий день
@@ -23,7 +26,7 @@ return [
 		2 => 'женский'
 	],
 	'visit_status' => [
-		0 => [
+		0 => [ // индекс является значением для поля visit_status в таблице History
 			'label' => 'ещё не прошло',
 			'color' => 'white'
 		],
@@ -39,6 +42,13 @@ return [
 	'present' => [
 		0 => 'black',
 		1 => 'green'
-	]
+	],
+	'photo' => [ // $CORE['LIST']['photo']
+		'limit_width' => 600,
+		'limit_height' => 600,
+		'min_width' => 100,
+		'min_height' => 100
+	],
+	'refresh' => 3
 ];
 ?>

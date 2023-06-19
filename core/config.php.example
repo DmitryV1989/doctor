@@ -10,7 +10,10 @@ return [
     ],
 
     // режим разработки
-    "DEV_MODE" => 1
+    "DEV_MODE" => 1,
+
+    // папка фотографий пациентов
+    "PATIENT_PHOTO_PATH" => "/static/images/upload/patient/"
 ];
 
 ?>
