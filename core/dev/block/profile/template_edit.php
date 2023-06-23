@@ -1,6 +1,9 @@
 <div id="patient_appointment">
+    <h1>Пациент: <?=$arPatient['name']?></h1>
+    <img src="<?=$arPatient['patient_photo']?>" alt="">
+
     <form method="post" id="app">
-        <h1>редактирование приёма</h1>
+        <h2>редактирование приёма</h2>
         <table border="1">
             <tr>
                 <th>Имя</th>

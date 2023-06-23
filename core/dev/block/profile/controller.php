@@ -52,6 +52,12 @@ if(!empty($_GET['code']) && $_GET['code'] == 'edit_appoint') {
 
     $sqlResult = mysqli_query($CORE['CONFIG']['DB'],"SELECT * FROM `patient` WHERE `id`=".$arHistory['patient_id']);
     while ($row = mysqli_fetch_assoc($sqlResult)) {
+        foreach (scandir($_SERVER['DOCUMENT_ROOT'] . $CORE['CONFIG']['PATIENT_PHOTO_PATH']) as $filename) {
+            if (explode('.',$filename)[0] == $arHistory['patient_id']) {
+                $row['patient_photo'] = $CORE['CONFIG']['PATIENT_PHOTO_PATH']. $filename;
+                break;
+            }
+        }
         $arPatient = $row;
     }
     require_once($_SERVER['DOCUMENT_ROOT'])."/core/dev/block/profile/template_edit.php";

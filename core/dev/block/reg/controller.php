@@ -17,6 +17,12 @@ switch(@$_GET['code']) {
 
             $sqlResult = mysqli_query($CORE['CONFIG']['DB'], "SELECT * FROM `patient` WHERE `id`= " . $_GET['id']);
             while ($row = mysqli_fetch_assoc($sqlResult)) {
+                foreach (scandir($_SERVER['DOCUMENT_ROOT'] . $CORE['CONFIG']['PATIENT_PHOTO_PATH']) as $filename) {
+                    if (explode('.',$filename)[0] == $_GET['id']) {
+                        $row['patient_photo'] = $CORE['CONFIG']['PATIENT_PHOTO_PATH']. $filename;
+                        break;
+                    }
+                }
                 $arPatient = $row;
             }
 

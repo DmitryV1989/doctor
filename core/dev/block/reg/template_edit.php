@@ -1,5 +1,7 @@
 <div id="reg_patient">
 	<h1>Редактирование пациента</h1>
+    <h2>Пациент: <?=$arPatient['name']?></h2>
+    <img src="<?=$arPatient['patient_photo']?>" alt="">
 	<form method="post" id="new_patient" enctype="multipart/form-data">
 		<div class="field_area">
 	    	<label for="photo">Фото пациента (не меньше 100х100)</label>
