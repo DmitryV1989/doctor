@@ -3,17 +3,17 @@
 return [
     // параметры подключения к БД
     "DB" => [
-        "server" => "",
-        "user" => "",
-        "password" => "",
-        "name" => ""
+        "SERVER" => "@DB_SERVER@",
+        "USER" => "@DB_USER@",
+        "PASSWORD" => "@DB_PASSWORD@",
+        "NAME" => "@DB_NAME@"
     ],
 
     // режим разработки (отображение дебага функцией "p" и ошибок от интерпритатора php)
-    "DEV_MODE" => 1,
+    "DEV_MODE" => @DEV_MODE@,
 
     // папка фотографий пациентов
-    "PATIENT_PHOTO_PATH" => "/static/images/upload/patient/"
+    "PATIENT_PHOTO_PATH" => "@PATIENT_PHOTO_PATH@"
 ];
 
 ?>
