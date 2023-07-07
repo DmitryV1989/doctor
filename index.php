@@ -1,6 +1,7 @@
 <? 
 if(!file_exists($_SERVER['DOCUMENT_ROOT']."/core/config.php")) {
-	// TODO: редирект на "/setup"
+	header("Location: /setup");
 }
+
 ?>
-Главная страница
+<h1>Главная страница</h1>

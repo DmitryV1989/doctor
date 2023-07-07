@@ -1,7 +1,30 @@
 <?php 
+
+
+function recursiveRemoveDir($dir) {
+
+	$includes = glob($dir.'/*');
+
+	foreach ($includes as $include) {
+
+		if(is_dir($include)) {
+
+			recursiveRemoveDir($include);
+		}
+
+		else {
+
+			unlink($include);
+		}
+	}
+
+	rmdir($dir);
+}
+
 if(!empty($_POST)) {
 	// проверяем checkbox c "режимом разработки"
 	if(!isset($_POST['DEV_MODE'])) $_POST['DEV_MODE'] = 0;
+	// $path = $_SERVER['DOCUMENT_ROOT'];
 	// берём образец и меняем метки на данные
 	$config_file = file_get_contents($_SERVER['DOCUMENT_ROOT'] ."/setup/config.php.example");
 	foreach ($_POST as $key => $value) {
@@ -9,8 +32,15 @@ if(!empty($_POST)) {
 	}
 	// создаём и наполняем "config.php"
 	file_put_contents($_SERVER['DOCUMENT_ROOT']."/core/config.php", $config_file);
-	// TODO: удаляем папку "/setup" и редиректим на главную
-	echo "файл успешно создан"; // будет удалено
+
+	// самоликвидация и редирект
+	unlink($_SERVER['DOCUMENT_ROOT']."/setup/config.php.example");
+	unlink($_SERVER['DOCUMENT_ROOT']."/setup/index.php");
+	rmdir($_SERVER['DOCUMENT_ROOT']."/setup");
+	header("Location: /");
+	// recursiveRemoveDir($_SERVER['DOCUMENT_ROOT']."/setup");
+
+	// TODO: НЕ УДАЛЯЕТСЯ ПУСТОЙ "/setup"
 }
 ?>
 <!DOCTYPE html>
