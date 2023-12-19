@@ -38,7 +38,7 @@
 	        <td><a href="/profile?id=<?=$item['id']?>"><?=$item['name']?></a></td>
 	        <td><?=$item['pers_numb']?></td>
 	        <td><?=$item['sex']?></td>
-	        <td><?=$item['DOB']?></td>
+	        <td><?=$item['birth']?></td>
 	        <td><a href="/reg?id=<?=$item['id']?>&code=edit">редактировать</a></td>
 	        <td><a href="/reg?id=<?=$item['id']?>&code=delete">удалить</a></td>
 
