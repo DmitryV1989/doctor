@@ -27,11 +27,11 @@ require_once($_SERVER['DOCUMENT_ROOT']."/core/boot/index.php");
 // $filter_fields = ['sex'=>[1,2],'visit_status'=>1];
 // $filter_fields = ['sex'=>1,'pers_numb'=>1112];
 
-// $filter_fields = ['patient_id'=>[1,2]];
-$filter_fields = ['sex'=>1];
+$filter_fields = ['visit_status'=>1];
+// $filter_fields = ['sex'=>1];
 
-// p($CORE['HISTORY']->Read(0, $filter_fields,"ASC"));
-p($CORE['PATIENT']->Read(0,"","ASC"));
+p($CORE['HISTORY']->Read());
+// p($CORE['PATIENT']->Read(0,"",""));
 
 // p($CORE['PATIENT']->Read([3,4]));
 

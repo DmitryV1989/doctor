@@ -74,9 +74,21 @@ function prop_resize_min($source_width, $source_height, $limit_width, $limit_hei
         "height" => $ready_height
     ];
 }
+// TODO: создать класс, отвечающий за создание страницы (Функции content() и template() вынести из данного файла в класс)
+# подключает блоки раздела
+function content() {
+    global $CORE;
+    foreach ($CORE['CURRENT']['SECTION'] as $block) {
+        $CORE['TEMPLATE_BLOCK'] = $_SERVER['DOCUMENT_ROOT'] . "/core/templates/block/".$block;
+        require_once($CORE['TEMPLATE_BLOCK']."/controller.php");
+    }
+}
 
-
-
+function template($tmp_name = "template.php") {
+    global $CORE;
+    // return $CORE['TEMPLATE_BLOCK']."/".$tmp_name;
+    require_once($CORE['TEMPLATE_BLOCK']."/".$tmp_name);
+}
 
 
 
