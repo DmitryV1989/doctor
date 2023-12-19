@@ -33,7 +33,7 @@ while($row = mysqli_fetch_assoc($sqlResult)) {
         elseif(strtotime($item['day_time'])>time()) $color = "green";
         switch ($item['visit_status']) {
             case 0 : $visit_status_color = 'white'; break;
-            case 1 : $visit_status_color = 'grey'; break;
+            case 1 : $visit_status_color = '#C0C0C0'; break;
             case 2 : $visit_status_color = 'pink'; break;
         }
         ?>

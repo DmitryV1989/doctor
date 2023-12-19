@@ -1,9 +1,10 @@
 <?php
-define("CONFIG", ["DB"=>[
-	"server"=>"localhost",
-	"user"=>"root",
-	"password"=>"",
-	"name"=>"Doctor"
+define("CONFIG", [
+    "DB"=>[
+    	"server"=>"localhost",
+    	"user"=>"root",
+    	"password"=>"",
+    	"name"=>"cron"
 	]
 ]);
 
